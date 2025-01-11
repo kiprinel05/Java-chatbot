@@ -18,6 +18,16 @@
     <input type="text" id="user-input" placeholder="Type your message here...">
     <button onclick="sendMessage()">Send</button>
     <button onclick="showChatHistory()">Show Chat History</button>
+    <!-- Buton pentru accesare Admin Panel -->
+    <button onclick="showLoginForm()">Conectare Admin</button>
+
+    <!-- Formular de autentificare -->
+    <div id="adminLoginForm" style="display:none;">
+        <h2>Autentificare Admin</h2>
+        <input type="text" id="adminUsername" placeholder="Username" required>
+        <input type="password" id="adminPassword" placeholder="Parola" required>
+        <button onclick="loginAdmin()">Autentificare</button>
+    </div>
 </div>
 </body>
 </html>

@@ -43,3 +43,25 @@ async function sendMessage() {
         }
     }, 300);
 }
+
+function showLoginForm() {
+    document.getElementById('adminLoginForm').style.display = 'block';
+}
+
+// ✅ Trimitere date de autentificare către server
+async function loginAdmin() {
+    const username = document.getElementById('adminUsername').value.trim();
+    const password = document.getElementById('adminPassword').value.trim();
+
+    const response = await fetch('/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    });
+
+    if (response.ok) {
+        window.location.href = "admin.html";
+    } else {
+        alert("Username sau parolă incorecte.");
+    }
+}

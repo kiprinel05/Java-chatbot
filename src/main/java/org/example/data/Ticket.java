@@ -23,4 +23,7 @@ public class Ticket {
     public String getType() { return type; }
     public int getAvailable() { return available; }
     public double getPrice() { return price; }
+    public void setPrice(double price) {  // ✅ Setter nou adăugat aici
+        this.price = price;
+    }
 }
