@@ -1,0 +1,44 @@
+Session: mj1hhyqnj
+User: salut
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: salut
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: cand canta oscar
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: pret bilet vip
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: cand canta oscar
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: pret bilete
+Bot: Pretul pentru un bilet general admission este de 100.0 RON.
+User: pret bilet vip
+Bot: Pretul pentru un bilet vip este de 250.0 RON.
+User: cate bilete vip mai sunt
+Bot: Avem 200 bilete vip disponibile.
+User: cand canta oscar
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: oscar
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: cand canta The Weeknd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: pret bilet vip
+Bot: Pretul pentru un bilet vip este de 250.0 RON.
+User: cand canta oscar
+Bot: Oscar va cânta în data de 2025-06-17 at 21:00.
+User: cat costa un bilet vip
+Bot: Pretul pentru un bilet vip este de 250.0 RON.
+User: vreau sa rezerv 2 bilete vip
+Bot: Rezervarea a fost efectuată cu succes! 2 bilete vip rezervate.
+User: cate bilete vip mai sunt
+Bot: Avem 198 bilete vip disponibile.
+User: cate bilete ultra vip mai sunt
+Bot: Avem 100 bilete ultra vip disponibile.
+User: .
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+----
+Session: null
+User: salut
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: cate bilete mai sunt
+Bot: Avem 500 bilete general admission disponibile.
+----

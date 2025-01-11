@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="chat-container">
+    <h1>Java ChatBot</h1>
+    <h2>made by Ciprian</h2>
+    <div id="chat-box" class="chat-box">
+        <p><strong>Bot:</strong> Salut! Cu ce te pot ajuta?</p>
+    </div>
+    <input type="text" id="user-input" placeholder="Type your message here...">
+    <button onclick="sendMessage()">Send</button>
+    <button onclick="showChatHistory()">Show Chat History</button>
+</div>
+
+<script>
+    let sessionId = localStorage.getItem('sessionId') || generateSessionId();
+    localStorage.setItem('sessionId', sessionId);
+
+    function generateSessionId() {
+        return Math.random().toString(36).substr(2, 9);
+    }
+
+    async function sendMessage() {
+        const userInput = document.getElementById("user-input").value;
+        if (userInput.trim() === "") return;
+
+        const chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML += `<p><strong>You:</strong> ${userInput}</p>`;
+        document.getElementById("user-input").value = "";
+
+        // ✅ Adăugăm animația de tastare
+        const typingIndicator = document.createElement("p");
+        typingIndicator.id = "typing-indicator";
+        typingIndicator.innerHTML = `<strong>Bot:</strong> <span class="typing">...</span>`;
+        chatBox.appendChild(typingIndicator);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+        // ✅ Simulăm o întârziere înainte de răspuns
+        setTimeout(async () => {
+            const response = await fetch("/api/chat/send", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userInput, sessionId: sessionId })
+            });
+
+            const data = await response.json();
+
+            // ✅ Ștergem indicatorul de tastare și adăugăm răspunsul
+            chatBox.removeChild(typingIndicator);
+            animateTyping(data.response);
+        }, 300); // ✅ 1 secundă de întârziere înainte de a răspunde
+    }
+
+    // ✅ Funcție pentru animația de scriere efectivă a mesajului
+    function animateTyping(message) {
+        const chatBox = document.getElementById("chat-box");
+        const botMessageElement = document.createElement("p");
+        botMessageElement.innerHTML = `<strong>Bot:</strong> `;
+        chatBox.appendChild(botMessageElement);
+
+        let i = 0;
+        const typingEffect = setInterval(() => {
+            if (i < message.length) {
+                botMessageElement.innerHTML += message.charAt(i);
+                i++;
+            } else {
+                clearInterval(typingEffect);
+            }
+        }, 10); // ✅ Viteză de tastare (50ms per literă)
+    }
+
+    async function showChatHistory() {
+        const response = await fetch(`/api/chat/history/${sessionId}`);
+        const data = await response.json();
+
+        const chatBox = document.getElementById("chat-box");
+        chatBox.innerHTML = "";
+
+        if (data.history.length === 0) {
+            alert("No chat history found for this session!");
+        } else {
+            data.history.forEach(message => {
+                chatBox.innerHTML += `<p>${message}</p>`;
+            });
+        }
+    }
+</script>
+</body>
+</html>
