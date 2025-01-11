@@ -35,6 +35,66 @@ User: cate bilete ultra vip mai sunt
 Bot: Avem 100 bilete ultra vip disponibile.
 User: .
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasda
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdasd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdasdasda
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dadas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dadsa
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdsadasdasdasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dadasd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdasd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdsa
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdsa
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasd
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasda
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: salut salut
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdsad
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: dasdas
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: salut osky
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: cat costa un bilet vip
+Bot: Prețul pentru un bilet vip este de 250.0 RON.
+User: salut osky cate tipuri de bilete sunt
+Bot: Avem 500 bilete general admission disponibile.
+User: care sunt
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
+User: care sunt tipurile de bilete
+Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
 ----
 Session: null
 User: salut
