@@ -18,7 +18,7 @@ public class IntentRecognizer {
     }
 
     /**
-     * ✅ Eliminarea diacriticelor și normalizarea textului
+     * ✅ Eliminarea diacriticelor pentru procesare uniformă
      */
     public static String removeDiacritics(String input) {
         return Normalizer.normalize(input, Normalizer.Form.NFD)
@@ -36,10 +36,10 @@ public class IntentRecognizer {
     }
 
     /**
-     * ✅ Actualizare Regex pentru detectarea corectă a întrebărilor despre artiști
+     * ✅ Identificarea intenției bazată pe sinonime
      */
     public String identifyIntent(String input) {
-        String normalizedInput = removeDiacritics(input);
+        String normalizedInput = removeDiacritics(input).toLowerCase().trim();
 
         if (containsSynonym(normalizedInput, "bilete") && normalizedInput.matches(".*(cate|ramase|disponibile|mai sunt).*")) {
             return "INQUIRE_TICKETS";
@@ -47,7 +47,7 @@ public class IntentRecognizer {
         if (containsSynonym(normalizedInput, "pret") && containsSynonym(normalizedInput, "bilete")) {
             return "INQUIRE_PRICE";
         }
-        if (normalizedInput.matches(".*(vreau sa rezerv|as dori sa rezerv).*bilete.*")) {
+        if (normalizedInput.matches(".*(vreau sa rezerv|as dori sa rezerv|vreau bilete).*")) {
             return "INQUIRE_RESERVATION";
         }
         if (containsSynonym(normalizedInput, "artist") && normalizedInput.matches(".*(cand canta|cand este|when is|performanta).*")) {
@@ -59,14 +59,14 @@ public class IntentRecognizer {
         if (normalizedInput.equals("reset")) {
             return "RESET_SESSION";
         }
-
         return "UNKNOWN_INTENT";
     }
+
     public String extractTicketType(String input) {
-        String normalizedInput = removeDiacritics(input);
+        String normalizedInput = removeDiacritics(input).toLowerCase();
         if (normalizedInput.contains("ultra vip")) return "ultra vip";
         if (normalizedInput.contains("vip")) return "vip";
-        if (normalizedInput.contains("general admission")) return "general admission";
-        return "general admission";  // ✅ Fallback pentru bilet standard
+        if (normalizedInput.contains("general admission") || normalizedInput.contains("general")) return "general admission";
+        return "general admission";  // ✅ Implicit
     }
 }

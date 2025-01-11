@@ -2,15 +2,10 @@ server:
   port: 8080
 
 spring:
-  mvc:
-    static-path-pattern: /**
-  web:
-    resources:
-      static-locations: classpath:/static/
-    datasource:
-      url: jdbc:postgresql://localhost:5432/festival
-      username: chatbot_user
-      password: secure_password
+  datasource:
+    url: jdbc:postgresql://localhost:5432/festival
+    username: chatbot_user
+    password: secure_password
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
