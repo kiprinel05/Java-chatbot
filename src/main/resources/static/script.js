@@ -36,7 +36,10 @@ async function sendMessage() {
 
         const data = await response.json();
         chatBox.removeChild(typingIndicator);
-        chatBox.innerHTML += `<p class="bot-message"><img src="images/bot.png" class="avatar"> ${data.response}</p>`;
-        chatBox.scrollTop = chatBox.scrollHeight;
+        if (data.response.toLowerCase().includes("resetată")) {
+            chatBox.innerHTML = `<p class="bot-message"><img src="images/bot.png" class="avatar"> ${data.response}</p>`;
+        } else {
+            chatBox.innerHTML += `<p class="bot-message"><img src="images/bot.png" class="avatar"> ${data.response}</p>`;
+        }
     }, 300);
 }

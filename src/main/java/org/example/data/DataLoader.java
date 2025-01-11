@@ -75,11 +75,19 @@ public class DataLoader {
      */
     public static String getArtistPerformance(String artistName) {
         String normalizedArtist = removeDiacritics(artistName);
+
+        // ✅ Potrivire exactă după eliminarea diacriticelor
+        if (artistSchedule.containsKey(normalizedArtist)) {
+            return artistSchedule.get(normalizedArtist);
+        }
+
+        // ✅ Potrivire parțială (similaritate) pentru cazuri mai flexibile
         for (Map.Entry<String, String> entry : artistSchedule.entrySet()) {
-            if (removeDiacritics(entry.getKey()).equals(normalizedArtist)) {
+            if (removeDiacritics(entry.getKey()).contains(normalizedArtist)) {
                 return entry.getValue();
             }
         }
+
         return "Artistul nu a fost găsit.";
     }
 

@@ -12,6 +12,9 @@ public class IntentRecognizer {
         synonyms.put("bilete", Arrays.asList("bilete", "tichete", "locuri", "intrari", "bilet"));
         synonyms.put("pret", Arrays.asList("pret", "costa", "tarif", "cost", "valoare", "cat"));
         synonyms.put("artist", Arrays.asList("artist", "formatie", "trupa", "cantaret", "band", "canta", "performanta"));
+        synonyms.put("list_artists", Arrays.asList("ce artisti vor fi prezenti", "ce artisti vor canta",
+                "lista artistilor", "da-mi o lista de artisti",
+                "spune-mi artistii disponibili", "lista artisti", "ce artisti vor performa"));
     }
 
     /**
@@ -50,6 +53,13 @@ public class IntentRecognizer {
         if (containsSynonym(normalizedInput, "artist") && normalizedInput.matches(".*(cand canta|cand este|when is|performanta).*")) {
             return "INQUIRE_ARTIST";
         }
+        if (containsSynonym(normalizedInput, "list_artists")) {
+            return "LIST_ARTISTS";
+        }
+        if (normalizedInput.equals("reset")) {
+            return "RESET_SESSION";
+        }
+
         return "UNKNOWN_INTENT";
     }
     public String extractTicketType(String input) {

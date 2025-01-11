@@ -1,99 +1,43 @@
 Session: mj1hhyqnj
-User: salut
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: salut
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: cand canta oscar
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: pret bilet vip
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: cand canta oscar
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: pret bilete
-Bot: Pretul pentru un bilet general admission este de 100.0 RON.
-User: pret bilet vip
-Bot: Pretul pentru un bilet vip este de 250.0 RON.
-User: cate bilete vip mai sunt
-Bot: Avem 200 bilete vip disponibile.
-User: cand canta oscar
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: oscar
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: cand canta The Weeknd
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: pret bilet vip
-Bot: Pretul pentru un bilet vip este de 250.0 RON.
-User: cand canta oscar
-Bot: Oscar va cânta în data de 2025-06-17 at 21:00.
-User: cat costa un bilet vip
-Bot: Pretul pentru un bilet vip este de 250.0 RON.
-User: vreau sa rezerv 2 bilete vip
-Bot: Rezervarea a fost efectuată cu succes! 2 bilete vip rezervate.
-User: cate bilete vip mai sunt
-Bot: Avem 198 bilete vip disponibile.
-User: cate bilete ultra vip mai sunt
-Bot: Avem 100 bilete ultra vip disponibile.
-User: .
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasda
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdasd
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasd
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdasdasda
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
 User: dadas
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dadsa
+User: cand canta oscar
+Bot: Artistul va cânta în data de Artistul nu a fost găsit.
+User: cand canta the weeknd
+Bot: Artistul va cânta în data de Artistul nu a fost găsit.
+User: cand canta oscar
+Bot: Artistul va cânta în data de Artistul nu a fost găsit.
+User: cand canta the weeknd
+Bot: Artistul va cânta în data de Artistul nu a fost găsit.
+User: cand canta oscar
+Bot: Artistul va cânta în data de Artistul nu a fost găsit.
+User: cand canta oscar
+Bot: Oscar va cânta în data de 2025-06-17 at 21:00
+User: asdasdas
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdsadasdasdasdas
+User: dsadas
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
+User: cand canta oscar
+Bot: Oscar va cânta în data de 2025-06-17 at 21:00
+User: cand canta the weeknd
+Bot: The weeknd va cânta în data de 2025-06-15 at 20:00
+User: vreau o lista cu artistii
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dadasd
+User: ce artisti sunt
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
+User: ce artisti vor performa
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdasd
+User: lista artisti
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
+User: lista artistilor
+Bot: Artiștii programați sunt: oscar, dua lipa, the weeknd
+User: ce artist canta 
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdsa
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdsa
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasd
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasda
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: salut salut
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdsad
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: dasdas
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: salut osky
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: cat costa un bilet vip
-Bot: Prețul pentru un bilet vip este de 250.0 RON.
-User: salut osky cate tipuri de bilete sunt
-Bot: Avem 500 bilete general admission disponibile.
-User: care sunt
-Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
-User: care sunt tipurile de bilete
+User: cat costa un bilet ultra vipo
+Bot: Prețul pentru un bilet ultra vip este de 500.0 RON.
+User: cate bilete ultra vip mai sunt
+Bot: Avem 100 bilete ultra vip disponibile.
+User: vreau sa rezerv 2
 Bot: Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.
 ----
 Session: null

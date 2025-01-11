@@ -66,7 +66,7 @@ public class ChatbotController {
         conversationHistory.putIfAbsent(sessionId, new ArrayList<>());
         conversationHistory.get(sessionId).add("User: " + input);
 
-        // ✅ Eliminăm diacriticele pentru procesare uniformă
+        // ✅ Procesarea intențiilor prin sinonime
         String normalizedInput = IntentRecognizer.removeDiacritics(input);
         String detectedIntent = intentRecognizer.identifyIntent(normalizedInput);
         String ticketType = intentRecognizer.extractTicketType(normalizedInput);
@@ -79,29 +79,35 @@ public class ChatbotController {
             case "INQUIRE_PRICE":
                 double price = DataLoader.getTicketPrice(ticketType);
                 return sendResponse(price > 0 ?
-                        "Prețul pentru un bilet " + ticketType + " este de " + price + " RON." :
-                        "Nu am găsit prețul pentru acest tip de bilet.", sessionId);
+                        "Prețul pentru un bilet " + ticketType + " este de " + price + " RON."
+                        : "Nu am găsit prețul pentru acest tip de bilet.", sessionId);
 
             case "INQUIRE_RESERVATION":
                 int quantity = extractTicketQuantity(normalizedInput);
                 boolean reserved = DataLoader.reserveTickets(ticketType, quantity);
                 return reserved ?
-                        sendResponse("Rezervarea a fost efectuată cu succes! " + quantity + " bilete " + ticketType + " rezervate.", sessionId) :
-                        sendResponse("Ne pare rău, nu avem suficiente bilete disponibile.", sessionId);
+                        sendResponse(quantity + " bilete " + ticketType + " rezervate cu succes.", sessionId)
+                        : sendResponse("Nu avem suficiente bilete disponibile.", sessionId);
 
             case "INQUIRE_ARTIST":
-                String artist = normalizedInput.replaceAll("(cand canta|cand este|when is|performanta)", "").trim();
-                String artistInfo = DataLoader.getArtistPerformance(artist);
-                return artistInfo.contains("nu a fost gasit") ?
-                        sendResponse("Nu am găsit informații despre artistul " + artist + ".", sessionId) :
-                        sendResponse(capitalizeFirstLetter(artist) + " va cânta în data de " + artistInfo + ".", sessionId);
+                // ✅ Extraxt specific pentru artist în loc de ticketType
+                String artistName = normalizedInput.replaceAll("(cand canta|cand este|when is|performanta)", "").trim();
+                String artistInfo = DataLoader.getArtistPerformance(artistName);
+                return sendResponse(
+                        artistInfo.contains("nu a fost găsit")
+                                ? "Nu am găsit informații despre artistul menționat. Te rog să verifici numele."
+                                : capitalizeFirstLetter(artistName) + " va cânta în data de " + artistInfo,
+                        sessionId
+                );
+            case "LIST_ARTISTS":
+                List<String> allArtists = DataLoader.getArtistsByDate("");
+                return sendResponse("Artiștii programați sunt: " + String.join(", ", allArtists), sessionId);
 
-            case "INQUIRE_EVENT_DATE":  // ✅ Căutare după ziua evenimentului
-                String date = normalizedInput.replaceAll("ce artisti canta pe|cand este", "").trim();
-                List<String> artistsOnDate = DataLoader.getArtistsByDate(date);
-                return sendResponse(artistsOnDate.isEmpty() ?
-                        "Nu există artiști programați pentru această zi." :
-                        "În data de " + date + " vor cânta: " + String.join(", ", artistsOnDate), sessionId);
+            // ✅ Implementarea resetării sesiunii
+            case "RESET_SESSION":
+                conversationHistory.remove(sessionId);
+                saveConversationHistory();
+                return sendResponse("Sesiunea a fost resetată cu succes.", sessionId);
 
             default:
                 return sendResponse("Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.", sessionId);
