@@ -5,52 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Festival</title>
     <link rel="stylesheet" href="admin/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body>
-<h1>Admin Panel - Gestionarea Festivalului</h1>
-<div class="adders">
-    <div class="form">
-    <h2>Adăugare Artist</h2>
-<form id="addArtistForm">
-    <input type="text" id="artistName" placeholder="Nume Artist" required>
-    <input type="date" id="performanceDate" required>
-    <input type="time" id="performanceTime" required>
-    <button type="submit">Adaugă Artist</button>
-</form>
+<body class="bg-dark text-white">
+<div class="container py-5">
+    <h1 class="text-center display-4">Admin Panel - Gestionarea Festivalului</h1>
+    <div class="row my-5">
+        <div class="col-md-6">
+            <h2 class="text-center">Adăugare Artist</h2>
+            <form id="addArtistForm" class="p-4 bg-light text-dark rounded shadow-lg">
+                <input type="text" class="form-control mb-3" id="artistName" placeholder="Nume Artist" required>
+                <input type="date" class="form-control mb-3" id="performanceDate" required>
+                <input type="time" class="form-control mb-3" id="performanceTime" required>
+                <button type="submit" class="btn btn-primary w-100">Adaugă Artist</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2 class="text-center">Adăugare Bilete</h2>
+            <form id="addTicketForm" class="p-4 bg-light text-dark rounded shadow-lg">
+                <select class="form-select mb-3" id="ticketType" required>
+                    <option value="" disabled selected>Alege Tipul de Bilet</option>
+                    <option value="General Admission">General Admission</option>
+                    <option value="VIP">VIP</option>
+                    <option value="ULTRA VIP">ULTRA VIP</option>
+                </select>
+                <input type="number" class="form-control mb-3" id="availableTickets" placeholder="Număr de Bilete" required>
+                <input type="number" class="form-control mb-3" step="0.01" id="ticketPrice" placeholder="Preț Bilet" required>
+                <button type="submit" class="btn btn-success w-100">Adaugă Bilet</button>
+            </form>
+        </div>
     </div>
-    <div class="form">
 
-        <h2>Adăugare Bilete</h2>
-        <form id="addTicketForm">
-            <select id="ticketType" required>
-                <option value="" disabled selected>Alege Tipul de Bilet</option>
-                <option value="General Admission">General Admission</option>
-                <option value="VIP">VIP</option>
-                <option value="ULTRA VIP">ULTRA VIP</option>
-            </select>
-            <input type="number" id="availableTickets" placeholder="Număr de Bilete" required>
-            <input type="number" step="0.01" id="ticketPrice" placeholder="Preț Bilet" required>
-            <button type="submit">Adaugă Bilet</button>
-        </form>
+    <h2 class="text-center mt-5">Lista Artiștilor</h2>
+    <table id="artistTable" class="table table-striped table-dark mt-3">
+        <thead>
+        <tr>
+            <th>Nume</th>
+            <th>Data Performanței</th>
+            <th>Ora Performanței</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Datele vor fi afișate aici -->
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <button id="fetchArtistsButton" class="btn btn-warning mt-3">Afișează Artiști</button>
     </div>
 </div>
 
-<h2>Lista Artiștilor</h2>
-<table id="artistTable" border="1">
-    <thead>
-    <tr>
-        <th>Nume</th>
-        <th>Data Performanței</th>
-        <th>Ora Performanței</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Datele vor fi afișate aici -->
-    </tbody>
-</table>
-
-<!-- Adaugă id pe buton -->
-<button id="fetchArtistsButton">Afișează Artiști</button>
 <script src="admin/admin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
