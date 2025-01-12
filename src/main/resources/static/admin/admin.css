@@ -1,117 +1,168 @@
-/* Stilizare generală */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Tsukimi+Rounded&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
     margin: 0;
     padding: 0;
-    background: linear-gradient(to right, #ff9966, #ff5e62);
+    background: url('../images/background2.jpeg') no-repeat center center fixed;
+    background-size: cover;
     color: #333;
     text-align: center;
+    overflow-x: hidden;
 }
 
-h1, h2 {
-    color: #fff;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+h1 {
+    color: white;
+    background: rgba(0,0 , 0, 0.4);
+    border-radius: 20px;
+    padding: 25px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+    font-size: 3rem;
+    margin-top: 20px;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+h2 {
+    color: black;
+    font-size: 2rem;
+    font-family: "Quicksand", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
 }
 
 /* Form Styling */
 form {
-    background: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 400px;
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 450px;
     margin: 20px auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    /*box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);*/
 }
 
 input[type="text"],
 input[type="date"],
 input[type="time"],
 input[type="number"],
-input[type="password"] {
-    width: 100%;
-    padding: 10px;
+input[type="password"],
+select {
+    width: 90%;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    font-family: "Quicksand", serif;
+    appearance: none;
+}
+
+select {
+    background: white;
+    cursor: pointer;
+}
+
+select:focus, input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     border: none;
-    border-radius: 5px;
-    background: #333;
-    color: #fff;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    font-family: "Raleway", serif;
 }
 
 button:hover {
-    background: #ff5e62;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Stilizare tabel (mai mic si ascuns implicit) */
+/* Table Styling */
 table {
     border-collapse: collapse;
-    width: 50%;
+    width: 80%;
     margin: 20px auto;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
     overflow: hidden;
-    display: none; /* Ascuns implicit */
+    display: none;
 }
 
 th, td {
-    padding: 12px;
+    padding: 15px;
     border: 1px solid #ddd;
     text-align: center;
 }
 
 th {
-    background-color: #333;
+    background-color: #ff7e5f;
     color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #ffe4e1;
 }
 
 tr:hover {
-    background-color: #f1f1f1;
+    background-color: #ffcccb;
+    transform: scale(1.02);
+    transition: transform 0.2s;
 }
 
-/* Admin Panel Container Styling */
-.admin-container {
+/* Flex container styling */
+.adders {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
     padding: 20px;
-    max-width: 800px;
-    margin: auto;
+}
+
+/* Card Style for Forms */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s;
+}
+
+.form:hover {
+    transform: scale(1.05);
 }
 
 /* Header Styling */
 header {
     padding: 20px;
-    background: #333;
+    background: linear-gradient(135deg, #333, #555);
     color: white;
     text-align: center;
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px 10px 0 0;
 }
 
 footer {
     text-align: center;
-    padding: 10px;
+    padding: 15px;
     background: #333;
     color: white;
-    border-radius: 0 0 8px 8px;
-}
-
-/* Afișare tabel la click pe buton */
-.show-table {
-    display: table !important;
-}
-.show-table {
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    border-radius: 0 0 10px 10px;
 }

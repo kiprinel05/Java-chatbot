@@ -1,7 +1,7 @@
 let sessionId = localStorage.getItem('sessionId') || generateSessionId();
 localStorage.setItem('sessionId', sessionId);
 
-document.getElementById("user-input").addEventListener("keypress", function(event) {
+document.getElementById("user-input").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         sendMessage();
         event.preventDefault();
@@ -45,7 +45,11 @@ async function sendMessage() {
 }
 
 function showLoginForm() {
-    document.getElementById('adminLoginForm').style.display = 'block';
+    if (document.getElementById('adminLoginForm').style.display == 'block')
+        document.getElementById('adminLoginForm').style.display = 'none';
+    else
+        document.getElementById('adminLoginForm').style.display = 'block';
+
 }
 
 // ✅ Trimitere date de autentificare către server
@@ -65,3 +69,6 @@ async function loginAdmin() {
         alert("Username sau parolă incorecte.");
     }
 }
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('fetchArtistsButton').addEventListener('click', fetchArtists);
+});

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,29 @@
     <link rel="icon" href="images/logo.png" type="image/png">
     <script src="script.js" defer></script>
 </head>
-<body>
-<div class="chat-container">
-    <h1>OSKY - CHATBOT</h1>
-    <h2>made by Ciprian</h2>
-    <div id="chat-box" class="chat-box">
-        <p class="bot-message"><img src="images/bot.png" class="avatar"> Salut! Eu sunt Osky - asistentul tau virtual de festival.<br>Cu ce te pot ajuta?</p>
-    </div>
-    <input type="text" id="user-input" placeholder="Type your message here...">
-    <button onclick="sendMessage()">Send</button>
-    <button onclick="showChatHistory()">Show Chat History</button>
-    <!-- Buton pentru accesare Admin Panel -->
-    <button onclick="showLoginForm()">Conectare Admin</button>
 
-    <!-- Formular de autentificare -->
-    <div id="adminLoginForm" style="display:none;">
-        <h2>Autentificare Admin</h2>
-        <input type="text" id="adminUsername" placeholder="Username" required>
-        <input type="password" id="adminPassword" placeholder="Parola" required>
-        <button onclick="loginAdmin()">Autentificare</button>
+<body>
+    <div class="chat-container">
+        <h1>OSKY - CHATBOT</h1>
+        <h2>made by Ciprian</h2>
+        <div id="chat-box" class="chat-box">
+            <p class="bot-message"><img src="images/bot.png" class="avatar"> Salut! Eu sunt Osky - asistentul tau
+                virtual de festival.<br>Cu ce te pot ajuta?</p>
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+        <button onclick="showChatHistory()">Show Chat History</button>
+        <!-- Buton pentru accesare Admin Panel -->
+        <button onclick="showLoginForm()">Conectare Admin</button>
+
+        <!-- Formular de autentificare -->
+        <div id="adminLoginForm" style="display:none;">
+            <h3>AUTENTIFICARE ADMIN</h3>
+            <input type="password" id="adminUsername" placeholder="Username" required>
+            <input type="password" id="adminPassword" placeholder="Parola" required>
+            <button onclick="loginAdmin()">Autentificare</button>
+        </div>
     </div>
-</div>
 </body>
+
 </html>

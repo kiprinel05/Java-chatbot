@@ -10,35 +10,32 @@ function toggleArtistsTable() {
 async function fetchArtists() {
     try {
         const response = await fetch('/admin/artists');
-        if (!response.ok) {
-            throw new Error('Eroare la încărcarea artiștilor.');
+        if (!response.ok) throw new Error("Eroare la încărcarea artiștilor.");
+
+        const data = await response.json();
+        const artistTable = document.getElementById('artistTable');
+
+        if (!artistTable) {
+            console.error("Elementul 'artistTable' nu a fost găsit în DOM.");
+            return;
         }
 
-        const artists = await response.json();
-        const tableBody = document.querySelector('#artistsTable tbody');
+        artistTable.innerHTML = ''; // Curăță tabelul anterior
 
-        // Curățare tabel înainte de reîncărcare
-        tableBody.innerHTML = '';
-
-        // Adăugare date în tabel
-        artists.forEach(artist => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${artist.name}</td>
-                <td>${artist.performanceDate}</td>
-                <td>${artist.performanceTime}</td>
+        data.forEach(artist => {
+            artistTable.innerHTML += `
+                <tr>
+                    <td>${artist.name}</td>
+                    <td>${artist.performanceDate}</td>
+                    <td>${artist.performanceTime}</td>
+                </tr>
             `;
-            tableBody.appendChild(row);
         });
-
-        // Afișarea tabelului doar dacă există artiști
-        if (artists.length > 0) {
-            toggleArtistsTable();
-        }
     } catch (error) {
-        alert('Eroare: ' + error.message);
+        alert(error.message);
     }
 }
+
 
 // ✅ Adăugarea unui artist
 const addArtistForm = document.getElementById('addArtistForm');

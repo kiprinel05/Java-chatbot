@@ -34,6 +34,7 @@ public class AdminController {
         return ResponseEntity.ok("Artist adăugat cu succes!");
     }
 
+
     // ✅ Ștergere artist
     @DeleteMapping("/artists/{name}")
     public ResponseEntity<String> deleteArtist(@PathVariable String name) {
