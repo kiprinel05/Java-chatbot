@@ -1,5 +1,6 @@
-package org.example.admin;
+package org.example.admin.Interfaces;
 
+import org.example.admin.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

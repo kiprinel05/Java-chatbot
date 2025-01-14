@@ -1,9 +1,9 @@
 package org.example.admin;
 
 import org.example.data.Artist;
-import org.example.data.ArtistRepository;
+import org.example.data.Interfaces.ArtistRepository;
 import org.example.data.Ticket;
-import org.example.data.TicketRepository;
+import org.example.data.Interfaces.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

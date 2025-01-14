@@ -1,5 +1,7 @@
 package org.example.data;
 
+import org.example.data.Interfaces.ArtistRepository;
+import org.example.data.Interfaces.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;

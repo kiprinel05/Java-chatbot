@@ -1,7 +1,6 @@
 package org.example.admin;
 
-import org.example.admin.Admin;
-import org.example.admin.AdminRepository;
+import org.example.admin.Interfaces.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

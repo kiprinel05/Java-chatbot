@@ -3,8 +3,8 @@ package org.example.chatbot;
 import org.example.chatbot.intentions.IntentRecognizer;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.example.data.ArtistRepository;
-import org.example.data.TicketRepository;
+import org.example.data.Interfaces.ArtistRepository;
+import org.example.data.Interfaces.TicketRepository;
 import org.example.data.Artist;
 import org.example.data.Ticket;
 
