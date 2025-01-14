@@ -1,5 +1,7 @@
 package org.example.data;
 
+import org.example.data.interfaces.ArtistRepository;
+import org.example.data.interfaces.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import jakarta.annotation.PostConstruct;
@@ -25,7 +27,6 @@ public class DataLoader {
 
         if (ticketRepository.count() == 0) {
             ticketRepository.save(new Ticket("general admission", 100, 250.0));
-            ticketRepository.save(new Ticket("VIP", 50, 500.0));
         }
     }
 }

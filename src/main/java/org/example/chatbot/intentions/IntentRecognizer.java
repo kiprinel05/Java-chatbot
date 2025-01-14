@@ -18,7 +18,7 @@ public class IntentRecognizer {
     }
 
     /**
-     * ✅ Eliminarea diacriticelor pentru procesare uniformă
+     * Eliminarea diacriticelor pentru procesare uniformă
      */
     public static String removeDiacritics(String input) {
         return Normalizer.normalize(input, Normalizer.Form.NFD)
@@ -27,7 +27,7 @@ public class IntentRecognizer {
     }
 
     /**
-     * ✅ Verifică dacă un text conține sinonimele pentru o categorie
+     * Verifică dacă un text conține sinonimele pentru o categorie
      */
     private boolean containsSynonym(String input, String key) {
         List<String> synonymsList = synonyms.getOrDefault(key, Collections.emptyList());
@@ -36,7 +36,7 @@ public class IntentRecognizer {
     }
 
     /**
-     * ✅ Identificarea intenției bazată pe sinonime
+     * Identificarea intenției bazată pe sinonime
      */
     public String identifyIntent(String input) {
         String normalizedInput = removeDiacritics(input).toLowerCase().trim();
@@ -67,6 +67,6 @@ public class IntentRecognizer {
         if (normalizedInput.contains("ultra vip")) return "ultra vip";
         if (normalizedInput.contains("vip")) return "vip";
         if (normalizedInput.contains("general admission") || normalizedInput.contains("general")) return "general admission";
-        return "general admission";  // ✅ Implicit
+        return "";
     }
 }

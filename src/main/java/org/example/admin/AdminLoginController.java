@@ -1,7 +1,6 @@
 package org.example.admin;
 
-import org.example.admin.Admin;
-import org.example.admin.AdminRepository;
+import org.example.admin.interfaces.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ public class AdminLoginController {
     public ResponseEntity<String> login(@RequestBody Admin loginRequest) {
         Optional<Admin> admin = adminRepository.findByUsername(loginRequest.getUsername());
 
-        // ✅ Comparare corectă între string-uri folosind equals()
         if (admin.isPresent() && admin.get().getPassword().equals(loginRequest.getPassword())) {
             return ResponseEntity.ok("Autentificare reușită! Acces permis la Admin Panel.");
         } else {

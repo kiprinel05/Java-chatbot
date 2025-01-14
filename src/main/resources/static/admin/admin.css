@@ -73,7 +73,6 @@ th {
     color: white;
 }
 
-/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;

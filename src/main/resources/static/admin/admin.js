@@ -1,5 +1,3 @@
-// Modernized JavaScript for managing the festival admin panel
-
 document.getElementById('fetchArtistsButton').addEventListener('click', fetchArtists);
 
 async function fetchArtists() {
