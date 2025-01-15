@@ -17,18 +17,12 @@ public class IntentRecognizer {
                 "spune-mi artistii disponibili", "lista artisti", "ce artisti vor performa"));
     }
 
-    /**
-     * ✅ Eliminarea diacriticelor pentru procesare uniformă
-     */
     public static String removeDiacritics(String input) {
         return Normalizer.normalize(input, Normalizer.Form.NFD)
                 .replaceAll("\\p{InCombiningDiacriticalMarks}+", "")
                 .toLowerCase().trim();
     }
 
-    /**
-     * ✅ Verifică dacă un text conține sinonimele pentru o categorie
-     */
     private boolean containsSynonym(String input, String key) {
         List<String> synonymsList = synonyms.getOrDefault(key, Collections.emptyList());
         String normalizedInput = removeDiacritics(input);

@@ -18,6 +18,10 @@ public class ChatbotController {
     private final TicketRepository ticketRepository;
     private final IntentRecognizer intentRecognizer;
     private final Map<String, List<String>> conversationHistory = new HashMap<>();
+    private final Map<String, String> lastTicketType = new HashMap<>();
+    private final Map<String, String> lastArtist = new HashMap<>();
+    private final Map<String, String> lastMessage = new HashMap<>();
+    private final Map<String, String> lastIntent = new HashMap<>();
 
     @Autowired
     public ChatbotController(ArtistRepository artistRepository, TicketRepository ticketRepository) {
@@ -26,104 +30,72 @@ public class ChatbotController {
         this.intentRecognizer = new IntentRecognizer();
     }
 
-    /**
-     * ✅ Returnează un răspuns bazat pe intenția detectată
-     */
     private String getResponse(String input, String sessionId) {
         conversationHistory.putIfAbsent(sessionId, new ArrayList<>());
         conversationHistory.get(sessionId).add("User: " + input);
 
-        // ✅ Normalizarea și identificarea intenției
-        String normalizedInput = IntentRecognizer.removeDiacritics(input).toLowerCase().trim();
+        String normalizedInput = IntentRecognizer.removeDiacritics(input).toLowerCase().replace("?", "").trim();
         String detectedIntent = intentRecognizer.identifyIntent(normalizedInput);
         String ticketType = intentRecognizer.extractTicketType(normalizedInput);
 
+        // Reținerea ultimului mesaj și intenție
+        String previousMessage = lastMessage.getOrDefault(sessionId, "");
+        String previousIntent = lastIntent.getOrDefault(sessionId, "UNKNOWN");
+        lastMessage.put(sessionId, input);
+
+        // Gestionare întrebări de tip "dar"
+        if (normalizedInput.matches(".*dar.*")) {
+            if (previousIntent.equals("INQUIRE_ARTIST")) {
+                detectedIntent = "INQUIRE_ARTIST";
+            } else if (previousIntent.equals("INQUIRE_PRICE")) {
+                detectedIntent = "INQUIRE_PRICE";
+                ticketType = lastTicketType.getOrDefault(sessionId, null);
+            }
+        }
+
+        // Actualizare context pe baza tipului detectat
+        if (ticketType != null) {
+            lastTicketType.put(sessionId, ticketType);
+        }
+        lastIntent.put(sessionId, detectedIntent);
+
         switch (detectedIntent) {
 
-            // ✅ Verificarea biletelor disponibile
             case "INQUIRE_TICKETS":
-                List<Ticket> allTickets = ticketRepository.findAll();
-                Optional<Ticket> matchingTicketType = allTickets.stream()
-                        .filter(t -> t.getType().equalsIgnoreCase(ticketType))
-                        .findFirst();
+                return getTicketAvailability(ticketType, sessionId);
 
-                if (matchingTicketType.isPresent()) {
-                    return sendResponse("Avem " + matchingTicketType.get().getAvailable()
-                            + " bilete de tip " + matchingTicketType.get().getType() + " disponibile.", sessionId);
-                } else {
-                    return sendResponse("Nu am găsit bilete de tipul specificat.", sessionId);
-                }
-
-                // ✅ Returnarea prețului pentru un tip de bilet
             case "INQUIRE_PRICE":
-                Optional<Ticket> ticketForPrice = ticketRepository.findAll().stream()
-                        .filter(t -> t.getType().equalsIgnoreCase(ticketType))
-                        .findFirst();
+                return getTicketPrice(ticketType, sessionId);
 
-                if (ticketForPrice.isPresent()) {
-                    return sendResponse("Prețul pentru un bilet de tip " + ticketType
-                            + " este de " + ticketForPrice.get().getPrice() + " RON.", sessionId);
-                } else {
-                    return sendResponse("Nu am găsit prețul pentru acest tip de bilet.", sessionId);
-                }
-
-                // ✅ Rezervarea biletelor
             case "INQUIRE_RESERVATION":
                 int quantity = extractTicketQuantity(normalizedInput);
-                Optional<Ticket> ticketToReserve = ticketRepository.findAll().stream()
-                        .filter(t -> t.getType().equalsIgnoreCase(ticketType))
-                        .findFirst();
+                return reserveTickets(ticketType, quantity, sessionId);
 
-                if (ticketToReserve.isPresent() && ticketToReserve.get().getAvailable() >= quantity) {
-                    Ticket updatedTicket = new Ticket(ticketType, ticketToReserve.get().getAvailable() - quantity, ticketToReserve.get().getPrice());
-                    ticketRepository.save(updatedTicket);
-                    return sendResponse(quantity + " bilete " + ticketType + " rezervate cu succes.", sessionId);
-                } else {
-                    return sendResponse("Nu există suficiente bilete disponibile pentru rezervare.", sessionId);
-                }
-
-                // ✅ Căutarea unui artist
             case "INQUIRE_ARTIST":
-                String artistName = normalizedInput.replaceAll("(cand canta|cand este|when is|performanta)", "").trim();
-                List<Artist> allArtists = artistRepository.findAll();
-                Optional<Artist> matchingArtist = allArtists.stream()
-                        .filter(a -> a.getName().equalsIgnoreCase(artistName))
-                        .findFirst();
-
-                if (matchingArtist.isPresent()) {
-                    return sendResponse(matchingArtist.get().getName() + " va cânta în data de "
-                            + matchingArtist.get().getPerformanceDate() + " la ora "
-                            + matchingArtist.get().getPerformanceTime() + ".", sessionId);
+                String artistName = normalizedInput.replaceAll("(cand canta|cand este|when is|performanta|dar)", "").trim();
+                if (artistName.isEmpty() && lastArtist.containsKey(sessionId)) {
+                    artistName = lastArtist.get(sessionId);
                 } else {
-                    return sendResponse("Nu am găsit informații despre acest artist.", sessionId);
+                    lastArtist.put(sessionId, artistName);
                 }
-                // ✅ Listarea tuturor artiștilor
+                return getArtistPerformance(artistName, sessionId);
+
             case "LIST_ARTISTS":
-                List<Artist> artistList = artistRepository.findAll();
-                if (artistList.isEmpty()) {
-                    return sendResponse("Nu există artiști disponibili.", sessionId);
-                } else {
-                    String artistNames = artistList.stream()
-                            .map(Artist::getName)
-                            .reduce((a, b) -> a + ", " + b)
-                            .orElse("");
-                    return sendResponse("Artiștii disponibili sunt: " + artistNames, sessionId);
-                }
+                return listAllArtists(sessionId);
 
-                // ✅ Resetarea sesiunii
             case "RESET_SESSION":
                 conversationHistory.remove(sessionId);
+                lastTicketType.remove(sessionId);
+                lastArtist.remove(sessionId);
+                lastMessage.remove(sessionId);
+                lastIntent.remove(sessionId);
                 return sendResponse("Sesiunea a fost resetată cu succes.", sessionId);
 
-            // ✅ Intenție necunoscută
             default:
                 return sendResponse("Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.", sessionId);
         }
     }
 
-    /**
-     * ✅ Returnează numărul de bilete disponibile
-     */
     private String getTicketAvailability(String ticketType, String sessionId) {
         Optional<Ticket> ticket = ticketRepository.findById(ticketType);
         if (ticket.isPresent()) {
@@ -132,21 +104,19 @@ public class ChatbotController {
         return sendResponse("Nu am găsit bilete de tipul specificat.", sessionId);
     }
 
-    /**
-     * ✅ Returnează prețul unui bilet
-     */
     private String getTicketPrice(String ticketType, String sessionId) {
         Optional<Ticket> ticket = ticketRepository.findById(ticketType);
         if (ticket.isPresent()) {
+            lastTicketType.put(sessionId, ticketType); // Actualizare context
             return sendResponse("Prețul pentru un bilet " + ticketType + " este de " + ticket.get().getPrice() + " RON.", sessionId);
         }
         return sendResponse("Nu am găsit prețul pentru acest tip de bilet.", sessionId);
     }
 
-    /**
-     * ✅ Rezervarea biletelor
-     */
     private String reserveTickets(String ticketType, int quantity, String sessionId) {
+        if (ticketType == null || ticketType.isEmpty()) {
+            return sendResponse("Te rog să specifici tipul de bilet pentru rezervare.", sessionId);
+        }
         Optional<Ticket> ticket = ticketRepository.findById(ticketType);
         if (ticket.isPresent() && ticket.get().getAvailable() >= quantity) {
             Ticket updatedTicket = new Ticket(ticketType, ticket.get().getAvailable() - quantity, ticket.get().getPrice());
@@ -156,20 +126,35 @@ public class ChatbotController {
         return sendResponse("Ne pare rău, nu avem suficiente bilete disponibile.", sessionId);
     }
 
-    /**
-     * ✅ Returnează programul unui artist
-     */
     private String getArtistPerformance(String artistName, String sessionId) {
-        Optional<Artist> artist = artistRepository.findById(artistName);
+        if (artistName == null || artistName.isEmpty()) {
+            return sendResponse("Te rog să specifici numele artistului.", sessionId);
+        }
+
+        String normalizedArtistName = IntentRecognizer.removeDiacritics(artistName).toLowerCase().replaceAll("\\s+", "").trim();
+
+        Optional<Artist> artist = artistRepository.findAll().stream()
+                .filter(a -> IntentRecognizer.removeDiacritics(a.getName()).toLowerCase().replaceAll("\\s+", "").trim().equals(normalizedArtistName))
+                .findFirst();
+
         if (artist.isPresent()) {
+            lastArtist.put(sessionId, artist.get().getName()); // Actualizare context
             return sendResponse(artist.get().getName() + " va cânta în data de " + artist.get().getPerformanceDate(), sessionId);
         }
         return sendResponse("Nu am găsit informații despre acest artist.", sessionId);
     }
 
-    /**
-     * ✅ Listarea tuturor artiștilor
-     */
+    private int extractTicketQuantity(String input) {
+        String[] words = input.split(" ");
+        for (String word : words) {
+            try {
+                return Integer.parseInt(word);
+            } catch (NumberFormatException ignored) {
+            }
+        }
+        return 1;
+    }
+
     private String listAllArtists(String sessionId) {
         List<Artist> allArtists = artistRepository.findAll();
         if (allArtists.isEmpty()) {
@@ -182,31 +167,11 @@ public class ChatbotController {
         return sendResponse("Artiștii programați sunt: " + String.join(", ", artistNames), sessionId);
     }
 
-    /**
-     * ✅ Extrage cantitatea de bilete din input
-     */
-    private int extractTicketQuantity(String input) {
-        String[] words = input.split(" ");
-        for (String word : words) {
-            try {
-                return Integer.parseInt(word);
-            } catch (NumberFormatException ignored) {
-            }
-        }
-        return 1;
-    }
-
-    /**
-     * ✅ Trimiterea unui răspuns în chat și salvarea conversației
-     */
     private String sendResponse(String response, String sessionId) {
         conversationHistory.get(sessionId).add("Bot: " + response);
         return response;
     }
 
-    /**
-     * ✅ Endpoint pentru trimiterea de mesaje către chatbot
-     */
     @PostMapping("/send")
     public Map<String, String> sendMessage(@RequestBody Map<String, String> request) {
         String userInput = request.get("message");
@@ -220,9 +185,6 @@ public class ChatbotController {
         return jsonResponse;
     }
 
-    /**
-     * ✅ Endpoint pentru vizualizarea istoricului conversației
-     */
     @GetMapping("/history/{sessionId}")
     public Map<String, List<String>> getConversationHistory(@PathVariable String sessionId) {
         Map<String, List<String>> historyResponse = new HashMap<>();
