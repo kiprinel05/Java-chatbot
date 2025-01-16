@@ -10,7 +10,7 @@ public class Artist {
     @Id
     private String name;
     private String performanceDate;
-    private String performanceTime;  // ✅ Noua coloană adăugată
+    private String performanceTime;
 
     public Artist() {}
 
