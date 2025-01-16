@@ -52,6 +52,9 @@ function showLoginForm() {
 
 }
 
+async function showChatHistory(){
+}
+
 // ✅ Trimitere date de autentificare către server
 async function loginAdmin() {
     const username = document.getElementById('adminUsername').value.trim();
@@ -72,3 +75,4 @@ async function loginAdmin() {
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('fetchArtistsButton').addEventListener('click', fetchArtists);
 });
+

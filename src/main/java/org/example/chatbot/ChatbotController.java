@@ -7,7 +7,7 @@ import org.example.data.Interfaces.ArtistRepository;
 import org.example.data.Interfaces.TicketRepository;
 import org.example.data.Artist;
 import org.example.data.Ticket;
-
+import org.example.chatbot.transport.TransportController;
 import java.util.*;
 
 @RestController
@@ -22,13 +22,15 @@ public class ChatbotController {
     private final Map<String, String> lastArtist = new HashMap<>();
     private final Map<String, String> lastMessage = new HashMap<>();
     private final Map<String, String> lastIntent = new HashMap<>();
-
+    private TransportController transportController;
     @Autowired
-    public ChatbotController(ArtistRepository artistRepository, TicketRepository ticketRepository) {
+    public ChatbotController(ArtistRepository artistRepository, TicketRepository ticketRepository, TransportController transportController) {
         this.artistRepository = artistRepository;
         this.ticketRepository = ticketRepository;
         this.intentRecognizer = new IntentRecognizer();
+        this.transportController = transportController;
     }
+
 
     private String getResponse(String input, String sessionId) {
         conversationHistory.putIfAbsent(sessionId, new ArrayList<>());
@@ -91,6 +93,11 @@ public class ChatbotController {
                 lastIntent.remove(sessionId);
                 return sendResponse("Sesiunea a fost resetată cu succes.", sessionId);
 
+                case "TRANSPORT":
+                // Logica pentru cererile de transport
+                Map<String, String> transportRequest = Map.of("message", input);
+                Map<String, String> transportResponse = transportController.getTransport(transportRequest);
+                return sendResponse(transportResponse.get("response"), sessionId);
             default:
                 return sendResponse("Încă nu înțeleg această întrebare. Încearcă să întrebi despre bilete, prețuri sau artiști.", sessionId);
         }

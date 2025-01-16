@@ -15,6 +15,7 @@ public class IntentRecognizer {
         synonyms.put("list_artists", Arrays.asList("ce artisti vor fi prezenti", "ce artisti vor canta",
                 "lista artistilor", "da-mi o lista de artisti",
                 "spune-mi artistii disponibili", "lista artisti", "ce artisti vor performa"));
+        synonyms.put("transport", Arrays.asList("transport", "autobuz", "microbuz", "calatorie", "drum", "plecare"));
     }
 
     public static String removeDiacritics(String input) {
@@ -52,6 +53,9 @@ public class IntentRecognizer {
         }
         if (normalizedInput.equals("reset")) {
             return "RESET_SESSION";
+        }
+        if (containsSynonym(normalizedInput, "transport") && normalizedInput.contains("din")) {
+            return "TRANSPORT";
         }
         return "UNKNOWN_INTENT";
     }

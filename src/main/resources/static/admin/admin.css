@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Tsukimi+Rounded&display=swap');
+
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
@@ -14,6 +16,7 @@ h2 {
     color: #ffffff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
     animation: slideDown 1.2s ease-out;
+    /* background-color: black; */
 }
 
 form {
@@ -27,16 +30,19 @@ form {
 input,
 select,
 button {
-    width: 100%;
+    width: 20%;
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
     border: none;
     transition: ease-in .3s;
+    font-family: "Kanit", serif;
+    font-weight: 500;
+    font-style: normal;
 }
 
 button {
-    background: linear-gradient(135deg, #4a00e0, #8e2de2);
+    background: linear-gradient(20deg, #4a00e0, #8e2de2);
     color: white;
     font-weight: bold;
     transition: all 0.3s;
@@ -118,4 +124,12 @@ th {
         transform: translateY(0);
         opacity: 1;
     }
+}
+
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Înălțimea minimă a containerului */
+    /* Fundal semi-transparent (opțional) */
 }
