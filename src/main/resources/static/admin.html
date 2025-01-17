@@ -11,10 +11,14 @@
 
 <body class="bg-dark text-white">
     <div class="container py-5">
-        <h1 class="text-center display-4">Admin Panel - Gestionarea Festivalului</h1>
+        <h1 class="text-center display-4">ADMIN PANEL</h1>
         <div class="row my-5">
             <div class="col-md-6">
-                <h2 class="text-center">Adăugare Artist</h2>
+                <div class="t">
+                    <div class="title">
+                        <h2 class="text-center">Adăugare Artist</h2>
+                    </div>
+                </div>
                 <form id="addArtistForm" class="p-4 bg-light text-dark rounded shadow-lg">
                     <input type="text" class="form-control mb-3" id="artistName" placeholder="Nume Artist" required>
                     <input type="date" class="form-control mb-3" id="performanceDate" required>
@@ -24,7 +28,11 @@
                 </form>
             </div>
             <div class="col-md-6">
-                <h2 class="text-center">Adăugare Bilete</h2>
+                <div class="t">
+                    <div class="title">
+                        <h2 class="text-center">Adăugare Bilete</h2>
+                    </div>
+                </div>
                 <form id="addTicketForm" class="p-4 bg-light text-dark rounded shadow-lg">
                     <select class="form-select mb-3" id="ticketType" required>
                         <option value="" disabled selected>Alege Tipul de Bilet</option>
@@ -41,8 +49,11 @@
                 </form>
             </div>
         </div>
-
-        <h2 class="text-center mt-5">Lista Artiștilor</h2>
+        <div class="t">
+            <div class="title">
+                <h2 class="text-center">Lista Artiștilor</h2>
+            </div>
+        </div>
         <table id="artistTable" class="table table-striped table-dark mt-3">
             <thead>
                 <tr>
@@ -64,7 +75,11 @@
     </div>
     <div class="center-container">
         <div class="col-md-6">
-            <h2 class="text-center">Ștergere Artist</h2>
+            <div class="t">
+                <div class="title">
+                    <h2 class="text-center">Ștergere Artist</h2>
+                </div>
+            </div>
             <form id="deleteArtistForm" class="p-4 bg-light text-dark rounded shadow-lg">
                 <select class="form-select mb-3" id="artistSelect" required>
                     <option value="" disabled selected>Alege un Artist</option>

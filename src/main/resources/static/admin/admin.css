@@ -4,14 +4,20 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    background: url("../images/background2.png");
-    color: #e1e1e1;
+    background: url("../images/background.png") fixed;
+    background-size: cover;
     text-align: center;
     overflow-x: hidden;
     animation: fadeIn 1.5s ease-in-out;
 }
 
-h1,
+h1 {
+    color: black;
+    text-shadow: 1px 1px solid black;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
+}
+
 h2 {
     color: #ffffff;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
@@ -130,6 +136,25 @@ th {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Înălțimea minimă a containerului */
-    /* Fundal semi-transparent (opțional) */
+}
+
+.title {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 5px 5px 5px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    animation: slideDown 1.2s ease-out;
+
+}
+
+.t {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -15,10 +15,13 @@
         <h1>OSKY - CHATBOT</h1>
         <h2>made by Ciprian</h2>
         <div id="chat-box" class="chat-box">
-            <p class="bot-message"><img src="images/bot.png" class="avatar"> Salut! Eu sunt Osky - asistentul tau
+            <p class="bot-message"><img src="images/bot-purple.png" class="avatar"> Salut! Eu sunt Osky - asistentul tau
                 virtual de festival.<br>Cu ce te pot ajuta?</p>
         </div>
-        <input type="text" id="user-input" placeholder="Type your message here...">
+        <form id="chatForm">
+            <input type="text" id="user-input" name="chat_message" autocomplete="off"
+                placeholder="Type your message here...">
+        </form>
         <button onclick="sendMessage()">Send</button>
         <button onclick="showChatHistory()">Show Chat History</button>
         <!-- Buton pentru accesare Admin Panel -->
