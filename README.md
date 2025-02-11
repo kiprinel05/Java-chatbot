@@ -20,3 +20,4 @@ Osky Chatbot este un asistent virtual inteligent conceput pentru a îmbunătăț
 ## Utilizare
 
 Osky Chatbot este ideal pentru festivaluri, îmbunătățind interacțiunea utilizatorilor cu organizatorii printr-o experiență conversațională fluidă și eficientă. Publicul țintă include atât participanții, care pot afla informații rapid, cât și organizatorii, care beneficiază de un sistem de administrare centralizat.
+<blockquote class="imgur-embed-pub" lang="en" data-id="DeHVKAn"><a href="https://imgur.com/DeHVKAn">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
