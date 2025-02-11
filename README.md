@@ -1,7 +1,7 @@
 # Osky Chatbot
 
 Osky Chatbot este un asistent virtual inteligent conceput pentru a îmbunătăți experiența utilizatorilor la festivaluri. Prin utilizarea procesării limbajului natural (NLP), acesta oferă răspunsuri precise la întrebări despre artiști, bilete și transport. Totodată, include un panou de administrare dedicat organizatorilor pentru gestionarea eficientă a evenimentului.
-![alt text](https://imgur.com/DeHVKAn)
+[img]https://i.imgur.com/qMTN1sN.png[/img]
 ## Funcționalități
 
 - **Interfață chatbot** – Oferă utilizatorilor informații despre programul festivalului, disponibilitatea biletelor și detalii despre transport.
