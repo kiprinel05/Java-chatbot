@@ -1,24 +1,37 @@
-# Osky Chatbot
+# 🤖 Osky Chatbot – Your Festival Assistant 🎶
 
-Osky Chatbot este un asistent virtual inteligent conceput pentru a îmbunătăți experiența utilizatorilor la festivaluri. Prin utilizarea procesării limbajului natural (NLP), acesta oferă răspunsuri precise la întrebări despre artiști, bilete și transport. Totodată, include un panou de administrare dedicat organizatorilor pentru gestionarea eficientă a evenimentului.
-<br>
-<a href="https://imgur.com/qMTN1sN">Screenshots</a>
-## Funcționalități
+## 📌 **Presentation Video**
 
-- **Interfață chatbot** – Oferă utilizatorilor informații despre programul festivalului, disponibilitatea biletelor și detalii despre transport.
-- **Panou de administrare** – Permite organizatorilor să adauge, editeze și șteargă artiști și bilete.
-- **Procesare NLP** – Utilizează algoritmi pentru recunoașterea și interpretarea intențiilor utilizatorilor, oferind răspunsuri adecvate în timp real.
-- **Bază de date PostgreSQL** – Stochează informațiile despre festival într-un mod eficient și securizat.
-- **Gestionare conversațională** – Poate urmări istoricul discuțiilor pentru a oferi răspunsuri contextuale și mai naturale.
+https://github.com/user-attachments/assets/f04af33b-3085-4796-ade8-f6c7d445c048
 
-## Tehnologii Utilizate
+Osky Chatbot is an **intelligent virtual assistant** designed to enhance the user experience at festivals. Using **Natural Language Processing (NLP)**, it provides accurate answers to questions about artists, tickets, and transportation. Additionally, it includes an **admin panel** for event organizers to efficiently manage festival details.
 
-- **Backend**: Java, Spring Boot, Hibernate
-- **Frontend**: HTML, CSS, JavaScript
-- **Bază de date**: PostgreSQL
-- **Procesare NLP**: IntentRecognizer
+---
 
-## Utilizare
+## ✨ Features
 
-Osky Chatbot este ideal pentru festivaluri, îmbunătățind interacțiunea utilizatorilor cu organizatorii printr-o experiență conversațională fluidă și eficientă. Publicul țintă include atât participanții, care pot afla informații rapid, cât și organizatorii, care beneficiază de un sistem de administrare centralizat.
+🗣️ **Chatbot Interface** – Provides users with real-time information about the festival schedule, ticket availability, and transportation details.  
+🎛️ **Admin Panel** – Allows organizers to add, edit, and delete artists and tickets.  
+🧠 **NLP Processing** – Uses AI-powered algorithms to understand user intent and provide accurate responses.  
+🗄️ **PostgreSQL Database** – Efficiently and securely stores festival information.  
+📜 **Conversational Memory** – Tracks previous conversations for more natural and contextual responses.  
+
+---
+
+## 🛠️ Technologies Used
+
+🖥️ **Backend**: Java, Spring Boot, Hibernate  
+🌐 **Frontend**: HTML, CSS, JavaScript  
+🐘 **Database**: PostgreSQL  
+🧠 **NLP Processing**: IntentRecognizer  
+
+---
+
+## 🎯 Use Case
+
+Osky Chatbot is perfect for **festivals**, providing a seamless interaction between attendees and organizers.  
+🎟️ **For attendees** – Get instant updates about events, tickets, and logistics.  
+📋 **For organizers** – Manage festival details through an easy-to-use admin dashboard.  
+
+🎶 **Experience the future of festival management with Osky Chatbot!** 🚀
 
