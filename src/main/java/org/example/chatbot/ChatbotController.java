@@ -40,12 +40,10 @@ public class ChatbotController {
         String detectedIntent = intentRecognizer.identifyIntent(normalizedInput);
         String ticketType = intentRecognizer.extractTicketType(normalizedInput);
 
-        // Reținerea ultimului mesaj și intenție
         String previousMessage = lastMessage.getOrDefault(sessionId, "");
         String previousIntent = lastIntent.getOrDefault(sessionId, "UNKNOWN");
         lastMessage.put(sessionId, input);
 
-        // Gestionare întrebări de tip "dar"
         if (normalizedInput.matches(".*dar.*")) {
             if (previousIntent.equals("INQUIRE_ARTIST")) {
                 detectedIntent = "INQUIRE_ARTIST";
@@ -55,7 +53,6 @@ public class ChatbotController {
             }
         }
 
-        // Actualizare context pe baza tipului detectat
         if (ticketType != null) {
             lastTicketType.put(sessionId, ticketType);
         }
@@ -94,7 +91,6 @@ public class ChatbotController {
                 return sendResponse("Sesiunea a fost resetată cu succes.", sessionId);
 
                 case "TRANSPORT":
-                // Logica pentru cererile de transport
                 Map<String, String> transportRequest = Map.of("message", input);
                 Map<String, String> transportResponse = transportController.getTransport(transportRequest);
                 return sendResponse(transportResponse.get("response"), sessionId);
@@ -114,7 +110,7 @@ public class ChatbotController {
     private String getTicketPrice(String ticketType, String sessionId) {
         Optional<Ticket> ticket = ticketRepository.findById(ticketType);
         if (ticket.isPresent()) {
-            lastTicketType.put(sessionId, ticketType); // Actualizare context
+            lastTicketType.put(sessionId, ticketType);
             return sendResponse("Prețul pentru un bilet " + ticketType + " este de " + ticket.get().getPrice() + " RON.", sessionId);
         }
         return sendResponse("Nu am găsit prețul pentru acest tip de bilet.", sessionId);

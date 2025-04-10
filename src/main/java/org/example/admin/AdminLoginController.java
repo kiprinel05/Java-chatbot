@@ -18,7 +18,6 @@ public class AdminLoginController {
     public ResponseEntity<String> login(@RequestBody Admin loginRequest) {
         Optional<Admin> admin = adminRepository.findByUsername(loginRequest.getUsername());
 
-        // ✅ Comparare corectă între string-uri folosind equals()
         if (admin.isPresent() && admin.get().getPassword().equals(loginRequest.getPassword())) {
             return ResponseEntity.ok("Autentificare reușită! Acces permis la Admin Panel.");
         } else {

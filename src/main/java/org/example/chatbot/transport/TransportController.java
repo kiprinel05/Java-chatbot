@@ -23,25 +23,20 @@ public class TransportController {
     public Map<String, String> getTransport(@RequestBody Map<String, String> request) {
         String userInput = request.getOrDefault("message", "").toLowerCase();
 
-        // Extragem locația de plecare și destinația din mesaj
         String departure = extractLocation(userInput, "din");
         String destination = extractLocation(userInput, "in");
 
-        // Implicit destinația este Costinesti dacă nu este specificată
         if (destination == null || destination.isEmpty()) {
             destination = "Costinesti";
         }
 
-        // Validăm locația de plecare
         if (departure == null || departure.isEmpty()) {
             return Map.of("response", "Te rog să specifici locația de plecare.");
         }
 
-        // Interogăm baza de date pentru rutele disponibile
         String sql = "SELECT schedule, route FROM transport WHERE departure = ? AND ? = ANY(route)";
         List<Map<String, Object>> results = jdbcTemplate.queryForList(sql, departure, destination);
 
-        // Procesăm rezultatele
         if (results.isEmpty()) {
             return Map.of("response", "Nu am găsit transport disponibil din " + departure + " către " + destination + ".");
         }
@@ -50,7 +45,6 @@ public class TransportController {
         String schedule = (String) nextTransport.get("schedule");
         List<String> route = (List<String>) nextTransport.get("route");
 
-        // Construim răspunsul
         String response = "Următorul transport din " + departure + " către " + destination + " pleacă la ora " + schedule +
                 ". Traseul este: " + String.join(" -> ", route) + ".";
         return Map.of("response", response);
@@ -67,7 +61,6 @@ public class TransportController {
     private Map<String, Object> findNextTransport(List<Map<String, Object>> results) {
         LocalTime now = LocalTime.now();
 
-        // Găsim următorul transport disponibil
         for (Map<String, Object> result : results) {
             String[] scheduleArray = (String[]) result.get("schedule");
             for (String time : scheduleArray) {
@@ -79,7 +72,6 @@ public class TransportController {
             }
         }
 
-        // Dacă nu găsim transporturi după ora curentă, returnăm primul din zi
         return results.get(0);
     }
 }

@@ -30,9 +30,6 @@ public class IntentRecognizer {
         return synonymsList.stream().anyMatch(normalizedInput::contains);
     }
 
-    /**
-     * ✅ Identificarea intenției bazată pe sinonime
-     */
     public String identifyIntent(String input) {
         String normalizedInput = removeDiacritics(input).toLowerCase().trim();
 
@@ -65,6 +62,6 @@ public class IntentRecognizer {
         if (normalizedInput.contains("ultra vip")) return "ultra vip";
         if (normalizedInput.contains("vip")) return "vip";
         if (normalizedInput.contains("general admission") || normalizedInput.contains("general")) return "general admission";
-        return "general admission";  // ✅ Implicit
+        return "general admission";
     }
 }
